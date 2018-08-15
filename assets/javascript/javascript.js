@@ -53,7 +53,10 @@ database.ref('/users').orderByChild("dateAdded").on("child_added", function (sna
   <td>${users.name}</td>
   <td>${users.role}</td>
   <td>${users.startDate}</td>
-  <td>${users.monthlyRate}</td>`)
+  <td>${users.monthlyRate}</td>
+  <td>${Math.abs(parseInt(moment().diff(users.startDate, 'months')))}</td>
+  <td>${Math.abs(parseInt(moment().diff(users.startDate, 'months'))) *
+        parseInt(users.monthlyRate)}`)
     $('#employeeList').append(tr);
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
